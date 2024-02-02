@@ -17,7 +17,8 @@ RUN apt-get install -y \
    g++ \
    make \
    cmake \
-   wget
+   wget \
+   vim
 
 RUN git clone https://github.com/tianocore/edk2 /edk2
 RUN git -C /edk2 submodule update --init
