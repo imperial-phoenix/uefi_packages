@@ -25,4 +25,4 @@ RUN git -C /edk2 submodule update --init
 RUN make -C /edk2/BaseTools
 
 WORKDIR /edk2
-#ENTRYPOINT ["/bin/bash", "-c", "source /edk2/edksetup.sh BaseTools && build -a X64 -DSECURE_BOOT_ENABLE=1 -p /edk2/BootLoaderPkg/BootLoaderPkg.dsc -b RELEASE"]
+ENTRYPOINT ["/bin/bash", "-c", "source /edk2/edksetup.sh BaseTools && build -a X64 -t GCC5 -DSECURE_BOOT_ENABLE=1 -p /edk2/BootLoaderPkg/BootLoaderPkg.dsc -b RELEASE"]
