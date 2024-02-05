@@ -1,12 +1,10 @@
 FROM ubuntu:latest
-#RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
 SHELL ["/bin/bash", "-c"]
 
-# Установка обновлений для OS
-RUN apt-get update && apt-get upgrade -y
-
-# Установка требуемого софта
-RUN apt-get install -y \
+# Установка обновлений для OS и требуемого софта
+RUN apt-get update && apt-get upgrade -y && \
+   apt-get install -y \
    build-essential \
    uuid-dev \
    iasl \
@@ -19,6 +17,7 @@ RUN apt-get install -y \
    cmake \
    wget \
    vim
+   rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/tianocore/edk2 /edk2
 RUN git -C /edk2 submodule update --init
